@@ -20,7 +20,7 @@ pipeline {
         stage('Code Analysis') {
             steps {
                 script {
-                    echo 'Analyzing the code with SonarQube'
+                    echo 'Running Code Analysis using SonarQube...'
                     // sh 'sonar-scanner'
                 }
             }
@@ -28,7 +28,7 @@ pipeline {
         stage('Security Scan') {
             steps {
                 script {
-                    echo 'Performing Security Scan with OWASP Dependency-Check'
+                    echo 'Performing Security Scan using OWASP Dependency-Check...'
                     // sh 'dependency-check.sh'
                 }
             }
@@ -36,7 +36,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 script {
-                    echo 'Deploying to Staging server'
+                    echo 'Deploying the application to the Staging environment using AWS CLI...'
                     // sh 'aws deploy'
                 }
             }
@@ -44,7 +44,7 @@ pipeline {
         stage('Integration Tests on Staging') {
             steps {
                 script {
-                    echo 'Running Integration Tests on Staging'
+                    echo 'Running Integration Tests on the Staging environment using Selenium...'
                     // sh 'selenium'
                 }
             }
@@ -52,7 +52,7 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 script {
-                    echo 'Deploying to Production server'
+                    echo 'Deploying the application to the Production environment using AWS CLI...'
                     // sh 'aws deploy'
                 }
             }
