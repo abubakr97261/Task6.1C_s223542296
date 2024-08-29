@@ -34,13 +34,12 @@
                 <version>3.8.1</version>
                 <configuration>
                     <suite name="Suite">
-    			<test thread-count="5" name="Test">
-        			<classes>
-            				<class name="Jenkinsfile"/>
-        			</classes>
-    			</test> <!-- Test -->
-		    </suite> <!-- Suite -->
-
+                        <test thread-count="5" name="Test">
+                            <classes>
+                                <class name="Jenkinsfile"/>
+                            </classes>
+                        </test> <!-- Test -->
+                    </suite> <!-- Suite -->
                 </configuration>
             </plugin>
 
@@ -51,41 +50,44 @@
                 <version>2.22.2</version>
             </plugin>
 
-	    <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-antrun-plugin</artifactId>
-            <version>1.8</version>
-            <executions>
-                <!-- Stage 1: Build -->
-                <execution>
-                    <phase>compile</phase> <!-- Run during the compile phase -->
-                    <goals>
-                        <goal>run</goal>
-                    </goals>
-                    <configuration>
-                        <target>
-                            <echo message="Stage 1: Building the project using Maven..." />
-                            <echo message="Compiling source code..." />
-                            <echo message="Packaging the application..." />
-                        </target>
-                    </configuration>
-                </execution>
+            <!-- Maven Antrun Plugin to run shell commands like echo -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.8</version>
+                <executions>
+                    <!-- Stage 1: Build -->
+                    <execution>
+                        <id>build-echo</id> <!-- Unique ID for this execution -->
+                        <phase>compile</phase> <!-- Run during the compile phase -->
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo message="Stage 1: Building the project using Maven..." />
+                                <echo message="Compiling source code..." />
+                                <echo message="Packaging the application..." />
+                            </target>
+                        </configuration>
+                    </execution>
 
-                <!-- Stage 2: Unit and Integration Tests -->
-                <execution>
-                    <phase>test</phase> <!-- Run during the test phase -->
-                    <goals>
-                        <goal>run</goal>
-                    </goals>
-                    <configuration>
-                        <target>
-                            <echo message="Stage 2: Running Unit Tests using JUnit..." />
-                            <echo message="Running Integration Tests using Maven Surefire..." />
-                        </target>
-                    </configuration>
-                </execution>
-            </executions>
-        </plugin>
+                    <!-- Stage 2: Unit and Integration Tests -->
+                    <execution>
+                        <id>test-echo</id> <!-- Unique ID for this execution -->
+                        <phase>test</phase> <!-- Run during the test phase -->
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo message="Stage 2: Running Unit Tests using JUnit..." />
+                                <echo message="Running Integration Tests using Maven Surefire..." />
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
         </plugins>
     </build>
