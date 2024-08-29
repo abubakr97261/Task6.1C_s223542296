@@ -2,3 +2,5 @@
 This is a credit task 6.1C with Jenkins
 
 This is the test 01 for automatic trigger of Jenkins job when commit happens.
+
+This is the test 02 for automatic trigger of Jenkins job when commit happens.
